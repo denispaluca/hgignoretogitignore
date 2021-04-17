@@ -17,17 +17,16 @@ function hgToGit(text) {
       continue;
     }
 
-    const regex = new RegExp(String.raw`/^${syntax}\s*:\s*(\S+)/`);
-    if (match = line.match(regex)) {
-      syntax = match[0].toLowerCase();
+    if (match = line.match(/^syntax\s*:\s*(\S+)/)) {
+      syntax = match[1].toLowerCase();
       //die "Unknown syntax '$syntax' on line $lineno of $hi\n" if ($syntax !~ /(glob|regexp)/);
       continue;
     }
 
     if (match = line.match(/^((?:\S|\\#)+)(\s*#.*)?\s*$/)) {
 
-      let content = match[0];
-      let comment = match[1];
+      let content = match[1] || '';
+      let comment = match[2] || '';
 
       if (syntax == 'glob') {
         result += `${content}${comment}\n`;
@@ -39,7 +38,7 @@ function hgToGit(text) {
         .replace(/\.\*/g, '*')
         .replace(/\./g, '?')
         .replace(/\\./g, '.')
-        .replace(/(\[.+?\])/g, content);
+        .replace(/(\[.+?\])/g, '$1');
 
       result += `${newLine}${comment}\n`;
     }
