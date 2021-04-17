@@ -1,11 +1,7 @@
 const reader = new FileReader();
-reader.addEventListener('loadend', (event) => {
-  const link = document.createElement('a');
-  link.download = '_.gitignore';
-  const blob = new Blob([hgToGit(event.target.result)], { type: 'text/plain' });
-  link.href = window.URL.createObjectURL(blob);
-  link.click();
-});
+const fileSelector = document.getElementById('file-selector');
+const hgTextArea = document.getElementById('hgTextArea');
+const gitTextArea = document.getElementById('gitTextArea');
 
 function hgToGit(text) {
   let result = '';
@@ -46,9 +42,22 @@ function hgToGit(text) {
   return result;
 }
 
-const fileSelector = document.getElementById('file-selector');
+
+reader.addEventListener('loadend', (event) => {
+  const link = document.createElement('a');
+  link.download = '_.gitignore';
+  const blob = new Blob([hgToGit(event.target.result)], { type: 'text/plain' });
+  link.href = window.URL.createObjectURL(blob);
+  link.click();
+  fileSelector.value = '';
+});
+
 fileSelector.addEventListener('change', (event) => {
   const fileList = event.target.files;
 
   reader.readAsText(fileList[0]);
 });
+
+function onClick(e) {
+  gitTextArea.value = hgToGit(hgTextArea.value);
+}
