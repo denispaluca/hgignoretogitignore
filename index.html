@@ -4,19 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>hgignore to gitignore</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
@@ -28,9 +17,18 @@
   <br />
   <h2>~~~ or ~~~</h2>
   <h3>Copy & paste:</h3>
-  <div>
-    <textarea id="hgTextArea"></textarea>
-    <textarea id="gitTextArea"></textarea>
+  <div class="textos">
+    <div>
+      <label for="hgTextArea">hgignore</label>
+      <br />
+      <textarea id="hgTextArea"></textarea>
+    </div>
+    <i class="fas fa-chevron-right" style="font-size:24px"></i>
+    <div>
+      <label for="gitTextArea">gitignore</label>
+      <br />
+      <textarea id="gitTextArea"></textarea>
+    </div>
   </div>
   <br />
   <button onclick="onClick()">Process</button>
