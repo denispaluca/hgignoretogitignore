@@ -9,14 +9,19 @@
 </head>
 
 <body>
-  <h1>Convert .hgignore to .gitignore</h1>
-  <br />
-  <div>
-    Upload .hgignore file: <input type="file" id="file-selector" accept=".hgignore">
+  <div class="textos">
+    <div>
+      <h1>Convert .hgignore to .gitignore</h1>
+      <br />
+      <br />
+      <div>
+        <b>Upload .hgignore file:</b> <input type="file" id="file-selector" accept=".hgignore">
+      </div>
+      <br />
+      <h3>Copy & paste:</h3>
+    </div>
+    <div></div>
   </div>
-  <br />
-  <h2>~~~ or ~~~</h2>
-  <h3>Copy & paste:</h3>
   <div class="textos">
     <div>
       <label for="hgTextArea">hgignore</label>
@@ -27,7 +32,7 @@
     <div>
       <label for="gitTextArea">gitignore</label>
       <br />
-      <textarea id="gitTextArea"></textarea>
+      <textarea id="gitTextArea" readonly></textarea>
     </div>
   </div>
 </body>
