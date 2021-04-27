@@ -58,6 +58,6 @@ fileSelector.addEventListener('change', (event) => {
   reader.readAsText(fileList[0]);
 });
 
-function onClick(e) {
+hgTextArea.addEventListener('input', () => {
   gitTextArea.value = hgToGit(hgTextArea.value);
-}
+});
